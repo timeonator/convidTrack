@@ -1,0 +1,19 @@
+<script>
+const Http = new XMLHttpRequest();
+const url = 'https://covidtracking.com/api/us';
+var response ; // response from api
+
+Http.open("GET", url);
+Http.send();
+
+Http.onreadystatechange = function(e) {
+    if( this.readyState == 4 && this.status == 200){
+        response = JSON.parse(Http.responseText)[0];
+        console.log(Http.responseText)
+        console.log("Testing")
+        console.log("Positive " + response.positive + " Negative " + response.negative + " Pending " + response.pending);
+        console.log("Last Updated " + response.lastModified);
+    }
+}
+
+</script>
